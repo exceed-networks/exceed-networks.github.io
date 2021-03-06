@@ -28,6 +28,18 @@ body, html {
 .w3-bar .w3-button {
   padding: 16px;
 }
+#loading {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
 </style>
 <body>
 
@@ -54,10 +66,10 @@ body, html {
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close &times;</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
-  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
   <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">PARTNERS</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
   <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
 </nav>
 
@@ -83,6 +95,78 @@ body, html {
 <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px;" id="pricing">
   <h3>PRICING</h3>
   <p class="w3-large">Choose a pricing plan that fits your needs.</p>
+  <style type="text/css">
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            /* Button used to open the contact form - fixed at the bottom of the page */
+            .open-button {
+              background-color: #555;
+              color: white;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              opacity: 0.8;
+              position: fixed;
+              bottom: 23px;
+              right: 28px;
+              width: 280px;
+            }
+
+            /* The popup form - hidden by default */
+            .form-popup {
+              display: none;
+              position: fixed;
+              bottom: 0;
+              right: 15px;
+              border: 3px solid #f1f1f1;
+              z-index: 9;
+            }
+
+            /* Add styles to the form container */
+            .form-container {
+              max-width: 300px;
+              padding: 10px;
+              background-color: white;
+            }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              border: none;
+              background: #f1f1f1;
+            }
+
+            /* When the inputs get focus, do something */
+            .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+              background-color: #ddd;
+              outline: none;
+            }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+              background-color: #4CAF50;
+              color: white;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              margin-bottom:10px;
+              opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+              background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+              opacity: 1;
+            }
+  </style>
   <div class="w3-row-padding" style="margin-top:64px;">
     <div class="w3-third">
       <ul class="w3-ul w3-white w3-hover-shadow">
@@ -94,7 +178,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm()">Sign Up</button>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+              <h1>Budget Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -108,7 +210,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm1()">Sign Up</button>
+          <div class="form-popup" id="myForm1">
+            <form action="/action_page.php" class="form-container">
+              <h1>Bronze Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -122,7 +242,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm2()">Sign Up</button>
+          <div class="form-popup" id="myForm2">
+            <form action="/action_page.php" class="form-container">
+              <h1>Silver Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -136,7 +274,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm3()">Sign Up</button>
+          <div class="form-popup" id="myForm3">
+            <form action="/action_page.php" class="form-container">
+              <h1>Gold Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -150,7 +306,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm4()">Sign Up</button>
+          <div class="form-popup" id="myForm4">
+            <form action="/action_page.php" class="form-container">
+              <h1>Platinum Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -164,7 +338,25 @@ body, html {
           <span class="w3-opacity">per month</span>
         </li>
         <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
+          <button class="w3-button w3-black w3-padding-large" onclick="openForm5()">Sign Up</button>
+          <div class="form-popup" id="myForm5">
+            <form action="/action_page.php" class="form-container">
+              <h1>Premium Home Plan</h1>
+              <h5>*Installation costs apply for this package</h5>
+
+              <label for="name" align="left"><b>Name</b></label>
+              <input type="text" placeholder="e.g John Doe" name="email" required>
+
+              <label for="number" align="left"><b>Phone Number</b></label>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+
+              <label for="location" align="left"><b>Describe you location</b></label>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+
+              <button type="submit" class="btn">Submit</button>
+              <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
+            </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -180,7 +372,349 @@ body, html {
       <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th">&nbsp;</i> View Our Works</a></p>
     </div>
     <div class="w3-col m6">
-      <img class="w3-image w3-round-large" src="/w3images/phone_buildings.jpg" alt="Buildings" width="700" height="394">
+      <style type="text/css">
+        /* KEYFRAMES */
+
+        @keyframes spin {
+          from {
+            transform: rotate(0);
+          }
+          to{
+            transform: rotate(359deg);
+          }
+        }
+
+        @keyframes spin3D {
+          from {
+            transform: rotate3d(.5,.5,.5, 360deg);
+          }
+          to{
+            transform: rotate3d(0deg);
+          }
+        }
+
+        @keyframes configure-clockwise {
+          0% {
+            transform: rotate(0);
+          }
+          25% {
+            transform: rotate(90deg);
+          }
+          50% {
+            transform: rotate(180deg);
+          }
+          75% {
+            transform: rotate(270deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes configure-xclockwise {
+          0% {
+            transform: rotate(45deg);
+          }
+          25% {
+            transform: rotate(-45deg);
+          }
+          50% {
+            transform: rotate(-135deg);
+          }
+          75% {
+            transform: rotate(-225deg);
+          }
+          100% {
+            transform: rotate(-315deg);
+          }
+        }
+
+        @keyframes pulse {
+          from {
+            opacity: 1;
+            transform: scale(1);
+          }
+          to {
+            opacity: .25;
+            transform: scale(.75);
+          }
+        }
+
+        /* GRID STYLING */
+
+        * {
+          box-sizing: border-box;
+        }
+
+        .spinner-box {
+          width: 300px;
+          height: 300px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+        }
+
+        /* SPINNING CIRCLE */
+
+        .leo-border-1 {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          padding: 3px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: rgb(63,249,220);
+          background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(63,249,220,1) 100%);
+          animation: spin3D 1.8s linear 0s infinite;
+        }
+
+        .leo-core-1 {
+          width: 100%;
+          height: 100%;
+          background-color: #37474faa;
+          border-radius: 50%;
+        }
+
+        .leo-border-2 {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          padding: 3px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: rgb(251, 91, 83);
+          background: linear-gradient(0deg, rgba(251, 91, 83, 0.1) 33%, rgba(251, 91, 83, 1) 100%);
+          animation: spin3D 2.2s linear 0s infinite;
+        }
+
+        .leo-core-2 {
+          width: 100%;
+          height: 100%;
+          background-color: #1d2630aa;
+          border-radius: 50%;
+        }
+
+        /* ALTERNATING ORBITS */
+
+        .circle-border {
+          width: 150px;
+          height: 150px;
+          padding: 3px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: rgb(63,249,220);
+          background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(63,249,220,1) 100%);
+          animation: spin .8s linear 0s infinite;
+        }
+
+        .circle-core {
+          width: 100%;
+          height: 100%;
+          background-color: #1d2630;
+          border-radius: 50%;
+        }
+
+        /* X-ROTATING BOXES */
+
+        .configure-border-1 {
+          width: 115px;
+          height: 115px;
+          padding: 3px;
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: gray;
+          animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+        }
+
+        .configure-border-2 {
+          width: 115px;
+          height: 115px;
+          padding: 3px;
+          left: -115px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: gray;
+          transform: rotate(45deg);
+          animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+        }
+
+        .configure-core {
+          width: 100%;
+          height: 100%;
+          background-color: #1d2630;
+        }
+
+        /* PULSE BUBBLES */
+
+        .pulse-container {
+          width: 120px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .pulse-bubble {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #3ff9dc;
+        }
+
+        .pulse-bubble-1 {
+            animation: pulse .4s ease 0s infinite alternate;
+        }
+        .pulse-bubble-2 {
+            animation: pulse .4s ease .2s infinite alternate;
+        }
+        .pulse-bubble-3 {
+            animation: pulse .4s ease .4s infinite alternate;
+        }
+
+        /* SOLAR SYSTEM */
+
+        .solar-system {
+          width: 250px;
+          height: 250px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .orbit {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #fafbfC;
+          border-radius: 50%;
+        } 
+
+        .earth-orbit {
+          width: 165px;
+          height: 165px;
+          -webkit-animation: spin 12s linear 0s infinite;
+        }
+
+        .venus-orbit {
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 7.4s linear 0s infinite;
+        }
+
+        .mercury-orbit {
+          width: 90px;
+          height: 90px;
+          -webkit-animation: spin 3s linear 0s infinite;
+        }
+
+        .planet {
+          position: absolute;
+          top: -5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #3ff9dc;
+        }
+
+        .sun {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          background-color: #ffab91;
+        }
+
+        .leo {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+        }
+
+        .blue-orbit {
+          width: 165px;
+          height: 165px;
+          border: 1px solid gray;
+          -webkit-animation: spin3D 3s linear .2s infinite;
+        }
+
+        .green-orbit {
+          width: 120px;
+          height: 120px;
+          border: 1px solid gray;
+          -webkit-animation: spin3D 2s linear 0s infinite;
+        }
+
+        .red-orbit {
+          width: 90px;
+          height: 90px;
+          border: 1px solid gray;
+          -webkit-animation: spin3D 1s linear 0s infinite;
+        }
+
+        .white-orbit {
+          width: 60px;
+          height: 60px;
+          border: 2px solid gray;
+          -webkit-animation: spin3D 10s linear 0s infinite;
+        }
+
+        .w1 {
+          transform: rotate3D(1, 1, 1, 90deg);
+        }
+
+        .w2 {
+          transform: rotate3D(1, 2, .5, 90deg);
+        }
+
+        .w3 {
+          transform: rotate3D(.5, 1, 2, 90deg);
+        }
+
+        .three-quarter-spinner {
+          width: 50px;
+          height: 50px;
+          border: 3px solid #fb5b53;
+          border-top: 3px solid transparent;
+          border-radius: 50%;
+          animation: spin .5s linear 0s infinite;
+        }
+      </style>
+      <!-- SPINNER ORBITS -->
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-6">
+        <div class="spinner-box" style="">
+          <div class="blue-orbit leo">
+          </div>
+
+          <div class="green-orbit leo">
+          </div>
+          
+          <div class="red-orbit leo">
+          </div>
+          
+          <div class="white-orbit w1 leo">
+          </div><div class="white-orbit w2 leo">
+          </div><div class="white-orbit w3 leo">
+          </div>
+        </div>
+        </div>
+        <div class="col-xs-6">
+          <h2 align="left">Get </br> connected</br>with</br> us</h2>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -263,30 +797,16 @@ body, html {
       <img src="https://s4.gifyu.com/images/wires_device_apparatus_173537_1024x768.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Brought internet connection to plenty of African households">
     </div>
     <div class="w3-col l3 m6">
-      <img src="/w3images/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+      <img src="https://s4.gifyu.com/images/camera_surveillance_wall_165395_1024x768.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Increase security by providing access to CCTV services">
     </div>
     <div class="w3-col l3 m6">
-      <img src="/w3images/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+      <img src="https://s4.gifyu.com/images/hand_mouse_keyboard_143632_1024x768.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="People can now browse the internet at affordable prices">
     </div>
     <div class="w3-col l3 m6">
-      <img src="/w3images/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+      <img src="https://s4.gifyu.com/images/living_room_room_style_sofa_tv_interior_39259_1024x768.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Exceed Networks supports streaming at 4K resolution">
     </div>
   </div>
 
-  <div class="w3-row-padding w3-section">
-    <div class="w3-col l3 m6">
-      <img src="/w3images/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="/w3images/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="/w3images/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
-    </div>
-    <div class="w3-col l3 m6">
-      <img src="/w3images/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
-    </div>
-  </div>
 </div>
 
 <!-- Modal for full size images on click-->
@@ -307,7 +827,7 @@ body, html {
       <p></p>
     </div>
     <div class="w3-col m6">
-      <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Networking</p>
+      <p class="w3-wide"><img src="https://s4.gifyu.com/images/network.png"> Networking</p>
       <div class="w3-grey">
         <div class="w3-container w3-dark-grey w3-center" style="width:90%">90%</div>
       </div>
@@ -315,7 +835,7 @@ body, html {
       <div class="w3-grey">
         <div class="w3-container w3-dark-grey w3-center" style="width:85%">85%</div>
       </div>
-      <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Programming</p>
+      <p class="w3-wide"><img src="https://s4.gifyu.com/images/web-programming.png"> Programming</p>
       <div class="w3-grey">
         <div class="w3-container w3-dark-grey w3-center" style="width:75%">75%</div>
       </div>
@@ -334,17 +854,17 @@ body, html {
       <p>Get high-speed internet connection for high qality 4K video streaming & gaming.</p>
     </div>
     <div class="w3-quarter" height="300px">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <i id="loading" class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large"><b>Pocket Friendly</b></p>
       <p>Internet solutions from Exceed Networks consider your budget... They are very pocket friendly.</p>
     </div>
     <div class="w3-quarter">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <i id="loading" class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large"><b>Consistency</b></p>
       <p>Internet speed is consistent for a subscription at any particular time.</p>
     </div>
     <div class="w3-quarter">
-      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <i id="loading" class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large"><b>Service & Support</b></p>
       <p>Incase of downtime or any other problem encountered while using Exceed Networks, a trained support team is ready with solutions.</p>
     </div>
@@ -417,5 +937,50 @@ function w3_close() {
 }
 </script>
 
+<!-- Price Processor -->
+<script type="text/javascript">
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+function openForm1() {
+  document.getElementById("myForm1").style.display = "block";
+}
+
+function closeForm1() {
+  document.getElementById("myForm1").style.display = "none";
+}
+function openForm2() {
+  document.getElementById("myForm2").style.display = "block";
+}
+
+function closeForm2() {
+  document.getElementById("myForm2").style.display = "none";
+}
+function openForm3() {
+  document.getElementById("myForm3").style.display = "block";
+}
+
+function closeForm3() {
+  document.getElementById("myForm3").style.display = "none";
+}
+function openForm4() {
+  document.getElementById("myForm4").style.display = "block";
+}
+
+function closeForm4() {
+  document.getElementById("myForm4").style.display = "none";
+}
+function openForm5() {
+  document.getElementById("myForm5").style.display = "block";
+}
+
+function closeForm5() {
+  document.getElementById("myForm5").style.display = "none";
+}
+</script>
 </body>
 </html>
