@@ -1,3 +1,20 @@
+<!--
+	         __
+	)______(/  \
+	( o  o )    \_______
+	 \    /             |\
+   (____)             | \
+	    \               |  *
+	     ||-||----\/\/-||   
+	     || ||       ||||    
+	     || ||       ||||
+		 || ||       ||||
+	_____||_||_______||||__________
+	
+	
+	   
+	 C A M E L.............C O D E  
+-->
 <!DOCTYPE html>
 <html>
 <title>EXCEED NETWORKS</title>
@@ -41,6 +58,15 @@ body, html {
     }
 }
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<!-- Email Bot -->
+<script type="text/javascript">
+  (function() {
+    // https://dashboard.emailjs.com/admin/integration
+    emailjs.init('user_TZ7g0EpSFkQzPfiHESXPC');
+  })();
+</script>
 <body>
 
 <!-- Navbar (sit on top) -->
@@ -172,7 +198,7 @@ body, html {
       <ul class="w3-ul w3-white w3-hover-shadow">
         <li class="w3-red w3-xlarge w3-padding-48">Budget Home Plan</li>
         <li class="w3-padding-16">Upto <b>20MBPS</b></li>
-        <li class="w3-padding-16" style="padding-left: 50px;" align="left"><p>&nbsp;</p><img src="https://s4.gifyu.com/images/checked.png"> Internet speed depends on pool traffic. </br><img src="https://s4.gifyu.com/images/checked.png"> A pool of 100MBPS has 20 users. </br><img src="https://s4.gifyu.com/images/checked.png"> Minimmum speed for the budget package is 7MBPS</br><img src="https://s4.gifyu.com/images/remove.png"> Resellable</li>
+        <li class="w3-padding-16" style="padding-left: 50px;" align="left"><p>&nbsp;</p><img src="https://s4.gifyu.com/images/checked.png"> Internet speed depends on 100MBPS pool traffic. </br><img src="https://s4.gifyu.com/images/checked.png"> Minimmum speed for the budget package is 7MBPS</br><img src="https://s4.gifyu.com/images/remove.png"> Resellable</li>
         <li class="w3-padding-16">
           <h2 class="w3-wide">Ksh. 1000</h2>
           <span class="w3-opacity">per month</span>
@@ -180,20 +206,21 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm()">Sign Up</button>
           <div class="form-popup" id="myForm">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="budget-form">
               <h1>Budget Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
               <label for="name" align="left"><b>Name</b></label>
-              <input type="text" placeholder="e.g John Doe" name="email" required>
+              <input type="text" placeholder="e.g John Doe" name="from_name" id="from_name" required>
 
               <label for="number" align="left"><b>Phone Number</b></label>
-              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" required>
+              <input type="text" placeholder="e.g +254 712 345 678" name="phonenumber" id="phonenumber" required>
 
               <label for="location" align="left"><b>Describe you location</b></label>
-              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" id="location" required>
+              <input type="text" name="plan" id="plan" value="Budget Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" value="send" id="budget-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
           </div>
@@ -212,7 +239,7 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm1()">Sign Up</button>
           <div class="form-popup" id="myForm1">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="bronze-form">
               <h1>Bronze Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
@@ -224,8 +251,9 @@ body, html {
 
               <label for="location" align="left"><b>Describe you location</b></label>
               <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" name="plan" id="plan" value="Bronze Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" id="bronze-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm1()">Close</button>
             </form>
           </div>
@@ -244,7 +272,7 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm2()">Sign Up</button>
           <div class="form-popup" id="myForm2">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="silver-form">
               <h1>Silver Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
@@ -256,8 +284,9 @@ body, html {
 
               <label for="location" align="left"><b>Describe you location</b></label>
               <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" name="plan" id="plan" value="Silver Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" id="silver-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
             </form>
           </div>
@@ -276,7 +305,7 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm3()">Sign Up</button>
           <div class="form-popup" id="myForm3">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="gold-form">
               <h1>Gold Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
@@ -288,8 +317,9 @@ body, html {
 
               <label for="location" align="left"><b>Describe you location</b></label>
               <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" name="plan" id="plan" value="Gold Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" id="gold-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm3()">Close</button>
             </form>
           </div>
@@ -308,7 +338,7 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm4()">Sign Up</button>
           <div class="form-popup" id="myForm4">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="platinum-form">
               <h1>Platinum Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
@@ -320,8 +350,9 @@ body, html {
 
               <label for="location" align="left"><b>Describe you location</b></label>
               <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" name="plan" id="plan" value="Platinum Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" id="platinum-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
             </form>
           </div>
@@ -340,7 +371,7 @@ body, html {
         <li class="w3-light-grey w3-padding-24">
           <button class="w3-button w3-black w3-padding-large" onclick="openForm5()">Sign Up</button>
           <div class="form-popup" id="myForm5">
-            <form action="/action_page.php" class="form-container">
+            <form action="/action_page.php" class="form-container" id="premium-form">
               <h1>Premium Home Plan</h1>
               <h5>*Installation costs apply for this package</h5>
 
@@ -352,8 +383,9 @@ body, html {
 
               <label for="location" align="left"><b>Describe you location</b></label>
               <input type="text" placeholder="e.g 3 blocks from Quickmart Fedha" name="location" required>
+              <input type="text" name="plan" id="plan" value="Premium Home Plan">
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" class="btn" id="premium-btn">Submit</button>
               <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
             </form>
           </div>
@@ -880,13 +912,13 @@ body, html {
     <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +254 713 336 054</p>
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: exceednetworks.ke@gmail.com</p>
     <br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+    <form action="/action_page.php" target="_blank" id="contact-form">
+      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name" id="name"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="email" id="email"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject" id="subject"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="message" id="message"></p>
       <p>
-        <button class="w3-button w3-black" type="submit">
+        <button class="w3-button w3-black" type="submit" id="contact-btn">
           <i class="fa fa-paper-plane"></i> SEND MESSAGE
         </button>
       </p>
@@ -937,8 +969,9 @@ function w3_close() {
 }
 </script>
 
-<!-- Price Processor -->
+
 <script type="text/javascript">
+//Price Processor
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -981,6 +1014,168 @@ function openForm5() {
 function closeForm5() {
   document.getElementById("myForm5").style.display = "none";
 }
+
+//Bots
+//Budget
+const btn = document.getElementById('budget-btn');
+
+document.getElementById('budget-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn.value = 'Send Email';
+        closeForm();
+        alert('Sent!');
+      }, (err) => {
+        btn.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Bronze
+const btn1 = document.getElementById('bronze-btn');
+
+document.getElementById('bronze-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn1.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn1.value = 'Send Email';
+        closeForm1();
+        alert('Sent!');
+      }, (err) => {
+        btn1.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Silver
+const btn2 = document.getElementById('silver-btn');
+
+document.getElementById('silver-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn2.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn2.value = 'Send Email';
+        closeForm2();
+        alert('Sent!');
+      }, (err) => {
+        btn2.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Gold
+const btn3 = document.getElementById('gold-btn');
+
+document.getElementById('gold-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn3.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn3.value = 'Send Email';
+        closeForm3();
+        alert('Sent!');
+      }, (err) => {
+        btn3.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Platinum
+const btn4 = document.getElementById('platinum-btn');
+
+document.getElementById('platinum-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn4.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn4.value = 'Send Email';
+        closeForm4();
+        alert('Sent!');
+      }, (err) => {
+        btn4.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Premium
+const btn5 = document.getElementById('premium-btn');
+
+document.getElementById('premium-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn5.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_cqcqycu';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn5.value = 'Send Email';
+        closeForm5();
+        alert('Sent!');
+      }, (err) => {
+        btn5.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
+//Contact
+const btn6 = document.getElementById('contact-btn');
+
+document.getElementById('contact-form')
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn6.value = 'Sending...';
+
+    const serviceID = 'service_1uvbfh7';
+    const templateID = 'template_j1zec4p';
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn6.value = 'Send Email';
+        alert('Sent!');
+      }, (err) => {
+        btn6.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+
 </script>
 </body>
 </html>
